@@ -1,0 +1,79 @@
+/* Стилі для форми пошуку */
+.js-search-form {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.js-search-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.days-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Стилі для списку погодних карт */
+.js-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+}
+
+.weather-card {
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.weather-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  display: block;
+}
+
+.date {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.weather-text {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.temperature {
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
