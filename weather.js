@@ -1,59 +1,90 @@
 // KEY 21 DAYS from 31.10.2023
 // 18979647cea74422aec120005233110
+//http://api.weatherapi.com/v1
 
 const elements = {
-    form: document.querySelector(".js-search-form"),
-    list: document.querySelector(".js-list"),
-  };
+  form: document.querySelector('.js-search'),
+  formContainer: document.querySelector('.js-form-container'),
+  list: document.querySelector('.js-list'),
+  addField: document.querySelector('.js-add'),
+  removeField: document.querySelector('.js-remove'),
+};
   
-  elements.form.addEventListener("submit", handlerForecast);
-  
-  function handlerForecast(evt) {
-    evt.preventDefault();
-  
-    const { city, days } = evt.currentTarget.elements;
-  
-    serviceWeather(city.value, days.value)
-      .then((data) => elements.list.innerHTML = createMarkup(data.forecast.forecastday))
-      .catch((err) => console.log(err));
+elements.addField.addEventListener('click', handlerAddField);
+elements.removeField.addEventListener('click', handlerRemoveField);
+elements.form.addEventListener('submit', handlerSearch)
+
+async function handlerSearch(evt) {
+  evt.preventDefault()
+
+  const formData = new FormData(evt.currentTarget)
+const countries = formData.getAll('country')
+const capitals =  await serviceGetCountries(countries)
+serviceGetWeather(capitals)
+}
+
+
+ async function serviceGetCountries(arr) {
+  const promises = arr.map(async country =>{
+    const resp = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+    if(!resp.ok){
+    throw new Error(resp.statusText) 
   }
+    return resp.json()
+  })
+
+  const data = await Promise.allSettled(promises)
   
-  function serviceWeather(city, days) {
-    const BASE_URL = "http://api.weatherapi.com/v1";
-    const API_KEY = "18979647cea74422aec120005233110";
-    const params = new URLSearchParams({
-      key: API_KEY,
-      q: city,
-      lang: "uk",
-      days,
-    });
+  return data.filter(({status}) => status === 'fulfilled').map(({value}) => value[0].capital[0] )
+ }
+
+
+function handlerAddField() {
+  elements.formContainer.insertAdjacentHTML(
+    'beforeend',
+    ' <input type="text" name="country"/>'
+  );
+}
+
+  function handlerRemoveField() {
+    const { children, lastElementChild } = elements.formContainer;
+        if (children.length === 1) {
+      return;
+    }
   
-    return fetch(`${BASE_URL}/forecast.json?${params}`).then((resp) => {
-      console.log(resp);
-      if (!resp.ok) {
-        throw new Error(resp.statusText);
-      }
-  
-      return resp.json();
-    });
+    lastElementChild.remove();
   }
-  
-  function createMarkup(arr) {
-    return arr
-      .map(
-        ({
-          date,
-          day: {
-            avgtemp_c,
-            condition: { text, icon },
-          },
-        }) => `
-      <li class="weather-card">
-          <img src="${icon}" alt="${text}" class="weather-icon" />
-          <h2 class="date">${date}</h2>
-          <h3 class="weather-text">${text}</h3>
-          <h3 class="temperature">${avgtemp_c} °C</h3>
-      </li>`
-      )
-      .join("");
+ 
+  async function serviceGetWeather(arr) {
+    const API_KEY = '18979647cea74422aec120005233110';
+    const BASE_URL = 'http://api.weatherapi.com/v1'
+    const END_POINT = '/current.json';
+
+    const promises = arr.map(async capital => {
+      const params = new URLSearchParams({
+        key: API_KEY,
+        q: capital,
+        lang: "uk",
+      }); 
+
+    const resp =  await fetch(`${BASE_URL}${END_POINT}?${params}`)
+      if(!resp.ok){
+      throw new Error(resp.statusText)
+    }
+      return resp.json()
+  });
+
+  const data = await Promise.allSettled(promises)
+  return data.filter(({status}) => status === 'fulfield').map(
+    ({ value: {
+        location: { country, name },
+        current: {
+          temp_c,
+          condition: { icon, text },
+        },
+      },
+    }) => {
+      return { country, name, temp_c, icon, text };
+    }
+  )
   }

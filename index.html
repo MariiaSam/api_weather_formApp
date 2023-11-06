@@ -13,26 +13,20 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&family=Roboto:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css" integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
   
-    <form class="js-search-form search-form">
-      <label for="city">Введіть назву міста</label>
-      <input type="text" name="city" class="search-input" required />
-
-      <label for="days">Виберіть кількі сть днів</label>
-      <select name="days" class="days-select">
-        <option value="3">3</option>
-        <option value="5">5</option>
-        <option value="7">7</option>
-      </select>
-      <button class="search-button">Пошук</button>
+    <form class="js-search">
+      <div class="js-form-container">
+        <input type="text" name="country" />
+      </div>
+      <button>Пошук</button>
+      <button class="js-add" type="button">Додати країну</button>
+      <button class="js-remove" type="button">Видалити поле</button>
     </form>
 
-    <ul class="js-list weather-cards">
-    
+    <ul class="js-list">
     </ul>
 
 

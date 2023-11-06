@@ -1,45 +1,52 @@
-/* Стилі для форми пошуку */
-.js-search-form {
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+form.js-search {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
-  margin: 20px 0;
+
 }
 
-.js-search-form label {
-  display: block;
-  margin-bottom: 10px;
+.js-form-container {
+  margin-bottom: 20px;
 }
 
-.search-input {
-  width: 100%;
+input[type="text"] {
+  width: 90%;
   padding: 10px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.days-select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.search-button {
+button {
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
-  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.search-button:hover {
+button:hover {
   background-color: #0056b3;
 }
 
-/* Стилі для списку погодних карт */
-.js-list {
+ul.js-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -47,33 +54,68 @@
   padding: 0;
 }
 
-.weather-card {
-  width: 200px;
-  padding: 10px;
-  margin: 10px;
+li {
+  background-color: #fff;
   border: 1px solid #ccc;
+  width: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+li:hover {
+  transform: translateY(-5px);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #666;
+}
+
+.temp {
+  font-weight: bold;
+  color: #f00;
+}
+
+
+
+
+
+
+img {
+  max-width: 100%;
+  height: auto;
   border-radius: 5px;
-  text-align: center;
 }
 
-.weather-icon {
-  width: 50px;
-  height: 50px;
-  margin: 0 auto;
-  display: block;
-}
-
-.date {
-  font-size: 1.2rem;
+h2 {
+  font-size: 20px;
   margin: 10px 0;
+  color: #333;
 }
 
-.weather-text {
-  font-size: 1rem;
-  margin: 10px 0;
+p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #666;
 }
 
-.temperature {
-  font-size: 1.4rem;
-  margin: 10px 0;
+.temp {
+  font-weight: bold;
+  color: #f00;
 }
