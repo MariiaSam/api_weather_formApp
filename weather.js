@@ -67,7 +67,7 @@ function handlerRemoveField() {
 }
 async function serviceGetWeather(arr) {
   const API_KEY = '18979647cea74422aec120005233110';
-  const BASE_URL = 'http://api.weatherapi.com/v1';
+  const BASE_URL = 'https://api.weatherapi.com/v1';
   const END_POINT = '/current.json';
 
   const promises = arr.map(async capital => {
