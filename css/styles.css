@@ -1,10 +1,20 @@
+body {
+background-image: url('../image/pexels-maksim-goncharenok-5046350-min.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+}
+
 form.js-search {
-  width: 300px;
+  width: 500px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+  text-align: center;
+  margin-top: 50vh; 
+  transform: translateY(-50%);
 }
 
 .js-form-container {
@@ -16,19 +26,25 @@ input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: rgb(0, 89, 255);
+  font-weight: bold;
+}
+
+input::placeholder {
+color: rgb(123, 164, 226);
 }
 
 button {
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
-  border: none;
-  border-radius: 5px;
+  border: 2px solid rgb(49, 225, 22);
+  border-radius: 50px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #97c7fb;
+  background-color: rgb(241, 131, 90);
 }
 
 ul {
@@ -40,7 +56,9 @@ ul {
 li {
   list-style: none;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
+  box-shadow: 0 0 5px rgba(186, 88, 88, 0.2);
+
   width: 200px;
   border-radius: 5px;
   padding: 10px;

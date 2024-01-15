@@ -112,8 +112,10 @@ function createMarkup(arr) {
         <h2>${name}</h2>
         <p>${text}</p>
         <p class="temp">${temp_c} °C</p>
+      
     </li>
   `
     )
     .join('');
 }
+
